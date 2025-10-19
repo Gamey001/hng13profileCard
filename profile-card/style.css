@@ -1,5 +1,11 @@
-body {
+/* === Base & Reset === */
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: system-ui, -apple-system, sans-serif;
   background-color: #f7f8fa;
   display: flex;
@@ -7,20 +13,35 @@ body {
   align-items: flex-start;
   min-height: 100vh;
   padding-top: 2rem;
+  color: #333;
 }
 
-.profile-card {
+/* === Profile Card === */
+article[data-testid="test-profile-card"] {
   background: #fff;
   margin-top: 1rem;
   padding: 2.5rem;
   border-radius: 1.2rem;
   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
   text-align: center;
-  max-width: 450px;
+  max-width: 480px;
   width: 100%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.avatar {
+article[data-testid="test-profile-card"]:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* === Avatar === */
+figure {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+img[data-testid="test-user-avatar"] {
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -30,33 +51,44 @@ body {
   outline: 1px solid #ff7b00;
 }
 
-h1 {
+/* === Header (Name) === */
+header h2[data-testid="test-user-name"] {
   margin-top: 1rem;
   font-size: 1.6rem;
   color: #222;
 }
 
-.bio {
+/* === Bio === */
+p[data-testid="test-user-bio"] {
   color: #555;
   font-size: 0.95rem;
   margin-top: 0.5rem;
+  line-height: 1.5;
 }
 
-.time {
+/* === Time Display === */
+p span#current-time[data-testid="test-user-time"] {
+  color: #ff7b00;
+  font-weight: bold;
+}
+
+p {
+  margin: 1rem 0;
   font-size: 0.9rem;
   color: #333;
-  margin: 1.2rem 0;
 }
 
-/* Social Links */
-.social-links {
+/* === Social Links === */
+nav[data-testid="test-user-social-links"] ul {
   display: flex;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 1.8rem;
+  list-style: none;
+  padding: 0;
 }
 
-.social-links a {
+nav[data-testid="test-user-social-links"] a {
   text-decoration: none;
   border: 1.5px solid #ff7b00;
   color: #ff7b00;
@@ -66,19 +98,24 @@ h1 {
   transition: background 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.social-links a:hover {
+nav[data-testid="test-user-social-links"] a:hover,
+nav[data-testid="test-user-social-links"] a:focus {
   background-color: #ff7b00;
   color: #fff;
   border-color: #ff7b00;
   box-shadow: 0 0 10px rgba(255, 123, 0, 0.4);
+  outline: none;
 }
 
-.section {
+/* === Hobbies & Dislikes Sections === */
+section[data-testid="test-user-hobbies"],
+section[data-testid="test-user-dislikes"] {
   text-align: left;
   margin-bottom: 1.5rem;
 }
 
-.section h2 {
+section[data-testid="test-user-hobbies"] h3,
+section[data-testid="test-user-dislikes"] h3 {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   text-decoration: underline 2px rgba(0, 0, 0, 0.08);
@@ -86,13 +123,14 @@ h1 {
   color: #6c63ff;
 }
 
-.section ul {
+section[data-testid="test-user-hobbies"] ul,
+section[data-testid="test-user-dislikes"] ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-.section li {
+section ul li {
   background: #fef4ec;
   border-left: 4px solid #ff7b00;
   border-radius: 0.5rem;
@@ -100,27 +138,31 @@ h1 {
   margin-bottom: 0.5rem;
   font-size: 0.9rem;
   color: #333;
-}
-
-.section li:hover {
-  background: #f1edff;
-  border-left-color: #6c63ff;
   transition: all 0.25s ease;
 }
 
-/* media queries */
+section ul li:hover {
+  background: #f1edff;
+  border-left-color: #6c63ff;
+}
+
+/* === Responsive Design === */
 @media (max-width: 600px) {
   body {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
     padding-bottom: 1.5rem;
   }
 
-  .profile-card {
+  article[data-testid="test-profile-card"] {
     padding: 1.8rem;
   }
 
-  .avatar {
+  img[data-testid="test-user-avatar"] {
     width: 90px;
     height: 90px;
+  }
+
+  header h2[data-testid="test-user-name"] {
+    font-size: 1.4rem;
   }
 }
