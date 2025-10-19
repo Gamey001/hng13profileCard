@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Card</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="profile-container" data-testid="profile-container">
+      <section class="profile-card" data-testid="profile-card">
+        <img
+          src="avatar.png"
+          alt="Profile avatar"
+          class="avatar"
+          data-testid="avatar"
+        />
+        <h1 data-testid="name">Gamaliel Dashua</h1>
+        <p class="bio" data-testid="bio">
+          Frontend developer passionate about accessibility, clean UI, and
+          creating meaningful user experiences.
+        </p>
+
+        <p class="time" data-testid="time">
+          Current time: <span id="current-time">--:--:--</span>
+        </p>
+
+        <div class="social-links">
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="twitter-link"
+            >Twitter</a
+          >
+          <a
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            data-testid="github-link"
+            >GitHub</a
+          >
+        </div>
+
+        <div class="section">
+          <h2>Hobbies</h2>
+          <ul data-testid="hobbies-list">
+            <li>Coding</li>
+            <li>Playing guitar</li>
+            <li>UI design exploration</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Dislikes</h2>
+          <ul data-testid="dislikes-list">
+            <li>Spam</li>
+            <li>People who look down on others</li>
+            <li>Messy code</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      function updateTime() {
+        const timeEl = document.getElementById("current-time");
+        const now = new Date();
+        timeEl.textContent = now.toLocaleTimeString();
+      }
+      updateTime();
+      setInterval(updateTime, 1000);
+    </script>
+  </body>
+</html>
