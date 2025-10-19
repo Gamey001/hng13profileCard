@@ -1,9 +1,8 @@
-// Update the time in milliseconds every second
-const timeEl = document.querySelector('[data-testid="test-user-time"]');
-
 function updateTime() {
-  timeEl.textContent = Date.now();
+  const timeEl = document.getElementById("current-time");
+  const now = new Date();
+  timeEl.textContent = now.toLocaleTimeString();
 }
 
-updateTime(); // initial render
-setInterval(updateTime, 1000); // live update
+updateTime();
+setInterval(updateTime, 1000);

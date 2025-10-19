@@ -3,73 +3,77 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profile Card</title>
+    <title>Gamaliel Dashua | Profile Card</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <main class="profile-container" data-testid="profile-container">
-      <section class="profile-card" data-testid="profile-card">
+    <article data-testid="test-profile-card">
+      <header>
+        <h2 data-testid="test-user-name">Gamaliel Dashua</h2>
+      </header>
+
+      <figure>
         <img
           src="avatar.png"
-          alt="Profile avatar"
-          class="avatar"
-          data-testid="avatar"
+          alt="Profile photo of Gamaliel Dashua"
+          data-testid="test-user-avatar"
         />
-        <h1 data-testid="name">Gamaliel Dashua</h1>
-        <p class="bio" data-testid="bio">
-          Frontend developer passionate about accessibility, clean UI, and
-          creating meaningful user experiences.
-        </p>
+      </figure>
 
-        <p class="time" data-testid="time">
-          Current time: <span id="current-time">--:--:--</span>
-        </p>
+      <p data-testid="test-user-bio">
+        Frontend developer passionate about accessibility, clean UI, and
+        creating meaningful user experiences.
+      </p>
 
-        <div class="social-links">
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="twitter-link"
-            >Twitter</a
-          >
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener noreferrer"
-            data-testid="github-link"
-            >GitHub</a
-          >
-        </div>
+      <p>
+        Current time (ms):
+        <span data-testid="test-user-time" id="current-time"></span>
+      </p>
 
-        <div class="section">
-          <h2>Hobbies</h2>
-          <ul data-testid="hobbies-list">
-            <li>Coding</li>
-            <li>Playing guitar</li>
-            <li>UI design exploration</li>
-          </ul>
-        </div>
+      <nav data-testid="test-user-social-links">
+        <ul>
+          <li>
+            <a
+              href="https://twitter.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="test-user-social-twitter"
+              >Twitter</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-testid="test-user-social-github"
+              >GitHub</a
+            >
+          </li>
+        </ul>
+      </nav>
 
-        <div class="section">
-          <h2>Dislikes</h2>
-          <ul data-testid="dislikes-list">
-            <li>Spam</li>
-            <li>People who look down on others</li>
-            <li>Messy code</li>
-          </ul>
-        </div>
+      <section data-testid="test-user-hobbies">
+        <h3>Hobbies</h3>
+        <ul>
+          <li>Coding</li>
+          <li>Playing guitar</li>
+          <li>UI design exploration</li>
+        </ul>
       </section>
-    </main>
 
-    <script>
-      function updateTime() {
-        const timeEl = document.getElementById("current-time");
-        const now = new Date();
-        timeEl.textContent = now.toLocaleTimeString();
-      }
-      updateTime();
-      setInterval(updateTime, 1000);
-    </script>
+      <section data-testid="test-user-dislikes">
+        <h3>Dislikes</h3>
+        <ul>
+          <li>Spam</li>
+          <li>People who look down on others</li>
+          <li>Messy code</li>
+        </ul>
+      </section>
+    </article>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+    <script src="tests.js"></script>
   </body>
 </html>
