@@ -2,6 +2,11 @@
 
 A simple, elegant **profile card web component** showcasing HTML, CSS, and JavaScript fundamentals — built for clarity, responsiveness, and accessibility.
 
+## 🚀 Live Demo
+
+Check out the live version of the project here:  
+👉 [gamhng13profilecard.netlify.app](https://gamhng13profilecard.netlify.app/)
+
 ---
 
 ## 🚀 Features
@@ -33,8 +38,3 @@ cd profile-card
 python3 -m http.server 5500 (**you must intall python3 for this to work**)
 or
 find you project local and open index.html with your browser
-
-## 🚀 Live Demo
-
-Check out the live version of the project here:  
-👉 [gamhng13profilecard.netlify.app](https://gamhng13profilecard.netlify.app/)
