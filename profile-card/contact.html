@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us | Gamaliel Dashua</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="contact.html" class="active">Contact Us</a></li>
+      </ul>
+    </nav>
+
+    <main class="content-wrapper">
+      <article>
+        <header>
+          <h2>Contact Us</h2>
+        </header>
+
+        <form id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input
+              id="name"
+              type="text"
+              data-testid="test-contact-name"
+              aria-describedby="error-name"
+              required
+            />
+            <p
+              id="error-name"
+              data-testid="test-contact-error-name"
+              class="error"
+            ></p>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              data-testid="test-contact-email"
+              aria-describedby="error-email"
+              required
+            />
+            <p
+              id="error-email"
+              data-testid="test-contact-error-email"
+              class="error"
+            ></p>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input
+              id="subject"
+              type="text"
+              data-testid="test-contact-subject"
+              aria-describedby="error-subject"
+              required
+            />
+            <p
+              id="error-subject"
+              data-testid="test-contact-error-subject"
+              class="error"
+            ></p>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              id="message"
+              rows="4"
+              data-testid="test-contact-message"
+              aria-describedby="error-message"
+              required
+            ></textarea>
+            <p
+              id="error-message"
+              data-testid="test-contact-error-message"
+              class="error"
+            ></p>
+          </div>
+
+          <button type="submit" data-testid="test-contact-submit">Send</button>
+
+          <p
+            id="success"
+            data-testid="test-contact-success"
+            class="success"
+          ></p>
+        </form>
+      </article>
+    </main>
+
+    <script>
+      const form = document.getElementById("contactForm");
+      const successMsg = document.getElementById("success");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let isValid = true;
+
+        const name = form.querySelector("#name");
+        const email = form.querySelector("#email");
+        const subject = form.querySelector("#subject");
+        const message = form.querySelector("#message");
+
+        document
+          .querySelectorAll(".error")
+          .forEach((el) => (el.textContent = ""));
+        successMsg.textContent = "";
+
+        const emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+        if (!name.value.trim()) {
+          document.getElementById("error-name").textContent =
+            "Name is required.";
+          isValid = false;
+        }
+        if (!email.value.trim()) {
+          document.getElementById("error-email").textContent =
+            "Email is required.";
+          isValid = false;
+        } else if (!emailPattern.test(email.value)) {
+          document.getElementById("error-email").textContent =
+            "Enter a valid email.";
+          isValid = false;
+        }
+        if (!subject.value.trim()) {
+          document.getElementById("error-subject").textContent =
+            "Subject is required.";
+          isValid = false;
+        }
+        if (!message.value.trim()) {
+          document.getElementById("error-message").textContent =
+            "Message is required.";
+          isValid = false;
+        } else if (message.value.trim().length < 10) {
+          document.getElementById("error-message").textContent =
+            "Message must be at least 10 characters.";
+          isValid = false;
+        }
+
+        if (isValid) {
+          successMsg.textContent = "Message sent successfully!";
+          form.reset();
+        }
+      });
+    </script>
+  </body>
+</html>

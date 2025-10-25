@@ -7,73 +7,83 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <article data-testid="test-profile-card">
-      <header>
-        <h2 data-testid="test-user-name">Gamaliel Dashua</h2>
-      </header>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About Me</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
 
-      <figure>
-        <img
-          src="avatar.png"
-          alt="Profile photo of Gamaliel Dashua"
-          data-testid="test-user-avatar"
-        />
-      </figure>
+    <main>
+      <article data-testid="test-profile-card">
+        <header>
+          <h2 data-testid="test-user-name">Gamaliel Dashua</h2>
+        </header>
 
-      <p data-testid="test-user-bio">
-        Frontend developer passionate about accessibility, clean UI, and
-        creating meaningful user experiences.
-      </p>
+        <figure>
+          <img
+            src="avatar.png"
+            alt="Profile photo of Gamaliel Dashua"
+            data-testid="test-user-avatar"
+          />
+        </figure>
 
-      <p>
-        Current time (ms):
-        <span data-testid="test-user-time" id="current-time"></span>
-      </p>
+        <p data-testid="test-user-bio">
+          Frontend developer passionate about accessibility, clean UI, and
+          creating meaningful user experiences.
+        </p>
 
-      <nav data-testid="test-user-social-links">
-        <ul>
-          <li>
-            <a
-              href="https://twitter.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="test-user-social-twitter"
-              >Twitter</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://github.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              data-testid="test-user-social-github"
-              >GitHub</a
-            >
-          </li>
-        </ul>
-      </nav>
+        <p>
+          Current time (ms):
+          <span data-testid="test-user-time" id="current-time"></span>
+        </p>
 
-      <section data-testid="test-user-hobbies">
-        <h3>Hobbies</h3>
-        <ul>
-          <li>Coding</li>
-          <li>Playing guitar</li>
-          <li>UI design exploration</li>
-        </ul>
-      </section>
+        <nav data-testid="test-user-social-links">
+          <ul>
+            <li>
+              <a
+                href="https://twitter.com/GamalielDashua"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="test-user-social-twitter"
+                >Twitter</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/Gamey001"
+                target="_blank"
+                rel="noopener noreferrer"
+                data-testid="test-user-social-github"
+                >GitHub</a
+              >
+            </li>
+          </ul>
+        </nav>
 
-      <section data-testid="test-user-dislikes">
-        <h3>Dislikes</h3>
-        <ul>
-          <li>Spam</li>
-          <li>People who look down on others</li>
-          <li>Messy code</li>
-        </ul>
-      </section>
-    </article>
+        <section data-testid="test-user-hobbies">
+          <h3>Hobbies</h3>
+          <ul>
+            <li>Coding</li>
+            <li>Playing guitar</li>
+            <li>UI design exploration</li>
+          </ul>
+        </section>
 
-    <!-- Scripts -->
-    <script src="script.js"></script>
-    <script src="tests.js"></script>
+        <section data-testid="test-user-dislikes">
+          <h3>Dislikes</h3>
+          <ul>
+            <li>Spam</li>
+            <li>People who look down on others</li>
+            <li>Messy code</li>
+          </ul>
+        </section>
+      </article>
+    </main>
+
+    <script>
+      document.getElementById("current-time").textContent = Date.now();
+    </script>
   </body>
 </html>
