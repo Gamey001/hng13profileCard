@@ -10,8 +10,7 @@
 /* === Body === */
 body {
   font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 60%, #f093fb 100%);
-  background-attachment: fixed;
+  background-color: #f8fafc;
   min-height: 100vh;
   line-height: 1.6;
   color: #1a1a2e;
@@ -19,12 +18,11 @@ body {
 
 /* === Navigation === */
 .main-nav {
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  background: #fff;
+  border-bottom: 1px solid #e0e0e0;
   text-align: center;
   padding: 0.85rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
 .main-nav ul {
@@ -50,7 +48,7 @@ body {
 
 .main-nav a {
   text-decoration: none;
-  color: rgba(255, 255, 255, 0.88);
+  color: #555;
   font-weight: 500;
   font-size: 0.875rem;
   padding: 0.45rem 1.1rem;
@@ -62,13 +60,13 @@ body {
 
 .main-nav a:hover,
 .main-nav a.active {
-  background: rgba(255, 255, 255, 0.22);
-  color: #fff;
+  background: rgba(102, 126, 234, 0.1);
+  color: #667eea;
   border-bottom: none;
 }
 
 .main-nav a:focus-visible {
-  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline: 2px solid #667eea;
   outline-offset: 2px;
 }
 
@@ -85,7 +83,7 @@ body {
 
 /* === Profile Card === */
 article[data-testid="test-profile-card"] {
-  background: #fff;
+  background: linear-gradient(to top, rgba(118, 75, 162, 0.1) 0%, rgba(102, 126, 234, 0.06) 25%, #fff 40%);
   margin: 2.5rem auto;
   max-width: 600px;
   width: 90%;
