@@ -6,7 +6,10 @@
     <title>Gamaliel Dashua | Profile Card</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -39,12 +42,17 @@
 
         <p>
           Current time (ms):
-          <span data-testid="test-user-time" id="current-time" aria-live="polite" aria-atomic="true"></span>
+          <span
+            data-testid="test-user-time"
+            id="current-time"
+            aria-live="polite"
+            aria-atomic="true"
+          ></span>
         </p>
 
         <nav data-testid="test-user-social-links">
           <ul>
-            <li>
+            <li style="border: none">
               <a
                 href="https://twitter.com/GamalielDashua"
                 target="_blank"
@@ -53,7 +61,7 @@
                 >Twitter</a
               >
             </li>
-            <li>
+            <li style="border: none">
               <a
                 href="https://github.com/Gamey001"
                 target="_blank"
@@ -87,7 +95,9 @@
 
     <script>
       const timeEl = document.getElementById("current-time");
-      function updateTime() { timeEl.textContent = Date.now(); }
+      function updateTime() {
+        timeEl.textContent = Date.now();
+      }
       updateTime();
       setInterval(updateTime, 1000);
     </script>
