@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gamaliel Dashua | Profile Card</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -36,7 +39,7 @@
 
         <p>
           Current time (ms):
-          <span data-testid="test-user-time" id="current-time"></span>
+          <span data-testid="test-user-time" id="current-time" aria-live="polite" aria-atomic="true"></span>
         </p>
 
         <nav data-testid="test-user-social-links">
@@ -83,7 +86,10 @@
     </main>
 
     <script>
-      document.getElementById("current-time").textContent = Date.now();
+      const timeEl = document.getElementById("current-time");
+      function updateTime() { timeEl.textContent = Date.now(); }
+      updateTime();
+      setInterval(updateTime, 1000);
     </script>
   </body>
 </html>

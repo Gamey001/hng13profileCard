@@ -1,98 +1,369 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
 /* === Global Reset === */
-* {
+*, *::before, *::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* === Body === */
 body {
-  font-family: system-ui, -apple-system, sans-serif;
-  background-color: #f8fafc;
-  color: #333;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 60%, #f093fb 100%);
+  background-attachment: fixed;
   min-height: 100vh;
   line-height: 1.6;
+  color: #1a1a2e;
 }
 
 /* === Navigation === */
 .main-nav {
-  background: #fff;
-  border-bottom: 1px solid #e0e0e0;
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   text-align: center;
-  padding: 1rem 0;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  padding: 0.85rem 0;
 }
 
 .main-nav ul {
   list-style: none;
+  display: flex;
+  justify-content: center;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
 }
 
 .main-nav li {
   display: inline-block;
-  margin: 0 1rem;
+  margin: 0 0.25rem;
+  margin-bottom: 0;
+  background: none;
+  border: none;
+  border-left: none;
+  padding: 0;
+  border-radius: 0;
 }
 
 .main-nav a {
   text-decoration: none;
-  color: #333;
+  color: rgba(255, 255, 255, 0.88);
   font-weight: 500;
-  padding-bottom: 0.25rem;
-  transition: color 0.3s, border-color 0.3s;
+  font-size: 0.875rem;
+  padding: 0.45rem 1.1rem;
+  border-radius: 2rem;
+  transition: background 0.25s, color 0.25s;
+  display: inline-block;
+  border-bottom: none;
 }
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: #007acc;
-  border-bottom: 2px solid #007acc;
+  background: rgba(255, 255, 255, 0.22);
+  color: #fff;
+  border-bottom: none;
 }
 
-/* === Main Content Wrapper === */
-.content-wrapper,
-article[data-testid="test-profile-card"] {
+.main-nav a:focus-visible {
+  outline: 2px solid rgba(255, 255, 255, 0.8);
+  outline-offset: 2px;
+}
+
+/* === Shared Card Base (about/contact pages) === */
+.content-wrapper {
   background: #fff;
-  margin: 2rem auto;
+  margin: 2.5rem auto;
   padding: 2rem;
-  border-radius: 1rem;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  border-radius: 1.75rem;
+  box-shadow: 0 24px 64px rgba(102, 126, 234, 0.2), 0 6px 20px rgba(0, 0, 0, 0.07);
   max-width: 600px;
   width: 90%;
 }
 
 /* === Profile Card === */
 article[data-testid="test-profile-card"] {
-  text-align: center;
+  background: #fff;
+  margin: 2.5rem auto;
+  max-width: 600px;
+  width: 90%;
+  border-radius: 1.75rem;
+  box-shadow: 0 24px 64px rgba(102, 126, 234, 0.2), 0 6px 20px rgba(0, 0, 0, 0.07);
+  padding: 2rem;
+  padding-right: 170px;
+  position: relative;
+  text-align: left;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 article[data-testid="test-profile-card"]:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.07);
+  transform: translateY(-4px);
+  box-shadow: 0 32px 72px rgba(102, 126, 234, 0.28), 0 8px 24px rgba(0, 0, 0, 0.09);
+}
+
+/* === Avatar Gear Badge (top-right) === */
+figure {
+  position: absolute;
+  top: 1.75rem;
+  right: 1.75rem;
+  width: 128px;
+  height: 128px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
+/* Gear shape */
+figure::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  clip-path: polygon(
+    40.2% 13.3%, 45.4% 12.3%, 44.2% 2.4%, 55.9% 2.4%, 54.6% 12.3%, 59.8% 13.3%,
+    64.8% 15%,   68.8% 5.8%,  78.9% 11.7%, 72.9% 19.7%, 76.9% 23.1%,
+    80.4% 27.1%, 88.3% 21.1%, 94.2% 31.2%, 85%   35.2%, 86.7% 40.2%,
+    87.7% 45.4%, 97.6% 44.2%, 97.6% 55.9%, 87.7% 54.6%, 86.7% 59.8%,
+    85%   64.8%, 94.2% 68.8%, 88.3% 78.9%, 80.4% 72.9%, 76.9% 76.9%,
+    72.9% 80.4%, 78.9% 88.3%, 68.8% 94.2%, 64.8% 85%,   59.8% 86.7%,
+    54.6% 87.7%, 55.9% 97.6%, 44.2% 97.6%, 45.4% 87.7%, 40.2% 86.7%,
+    35.2% 85%,   31.2% 94.2%, 21.1% 88.3%, 27.1% 80.4%, 23.1% 76.9%,
+    19.7% 72.9%, 11.7% 78.9%, 5.8%  68.8%, 15%   64.8%, 13.3% 59.8%,
+    12.3% 54.6%, 2.4%  55.9%, 2.4%  44.2%, 12.3% 45.4%, 13.3% 40.2%,
+    15%   35.2%, 5.8%  31.2%, 11.7% 21.1%, 19.7% 27.1%, 23.1% 23.1%,
+    27.1% 19.7%, 21.1% 11.7%, 31.2% 5.8%,  35.2% 15%,   40.2% 13.3%
+  );
+}
+
+/* White inner ring */
+figure::after {
+  content: '';
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 1;
 }
 
 img[data-testid="test-user-avatar"] {
-  width: 120px;
-  height: 120px;
+  width: 78px;
+  height: 78px;
   border-radius: 50%;
   object-fit: cover;
-  margin: 1rem 0;
-  border: 3px solid #007acc;
+  position: relative;
+  z-index: 2;
+  border: 2.5px solid rgba(102, 126, 234, 0.25);
 }
 
-h2,
-h3 {
-  color: #222;
+/* === Name Header === */
+article[data-testid="test-profile-card"] > header {
+  margin-bottom: 0.75rem;
+  padding-top: 0.2rem;
+}
+
+h2[data-testid="test-user-name"] {
+  font-size: 1.45rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin-bottom: 0;
+}
+
+/* Role pill under name */
+article[data-testid="test-profile-card"] > header::after {
+  content: 'Frontend Developer';
+  display: inline-block;
+  margin-top: 0.5rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #fff;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  padding: 0.2rem 0.7rem;
+  border-radius: 1rem;
+}
+
+/* === Bio === */
+p[data-testid="test-user-bio"] {
+  font-size: 0.875rem;
+  color: #5a5a7a;
+  line-height: 1.65;
+  margin-bottom: 0.75rem;
+  max-width: 340px;
+}
+
+/* === Time === */
+article[data-testid="test-profile-card"] > p:not([data-testid]) {
+  font-size: 0.775rem;
+  color: #c0c0d0;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+}
+
+span[data-testid="test-user-time"] {
+  font-variant-numeric: tabular-nums;
+  color: #764ba2;
+  font-weight: 600;
+  font-size: 0.775rem;
+  background: rgba(118, 75, 162, 0.08);
+  padding: 0.15rem 0.5rem;
+  border-radius: 0.4rem;
+  letter-spacing: 0.01em;
+}
+
+/* === Social Links === */
+nav[data-testid="test-user-social-links"] {
+  margin-bottom: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid #f0f0f6;
+}
+
+nav[data-testid="test-user-social-links"] ul {
+  list-style: none;
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav[data-testid="test-user-social-links"] li {
+  background: none;
+  border: none;
+  border-left: none;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 0;
+  border-radius: 0;
+}
+
+nav[data-testid="test-user-social-links"] a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 1.1rem;
+  border-radius: 2rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.2s;
+  letter-spacing: 0.01em;
+}
+
+a[data-testid="test-user-social-twitter"] {
+  background: #e8f4fd;
+  color: #1da1f2;
+  border: 1px solid rgba(29, 161, 242, 0.25);
+}
+
+a[data-testid="test-user-social-github"] {
+  background: #f0f0f4;
+  color: #24292e;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+nav[data-testid="test-user-social-links"] a:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+nav[data-testid="test-user-social-links"] a:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
+}
+
+/* === Profile Card Section Labels === */
+article[data-testid="test-profile-card"] section h3 {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #c0c0d0;
+  margin-bottom: 0.65rem;
+}
+
+/* === Hobby / Dislike Tag Lists === */
+section[data-testid="test-user-hobbies"],
+section[data-testid="test-user-dislikes"] {
+  margin-bottom: 1rem;
+}
+
+section[data-testid="test-user-hobbies"] ul,
+section[data-testid="test-user-dislikes"] ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+section[data-testid="test-user-hobbies"] li {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.09), rgba(118, 75, 162, 0.09));
+  color: #5563c1;
+  border: 1px solid rgba(102, 126, 234, 0.22);
+  border-left: 1px solid rgba(102, 126, 234, 0.22);
+  padding: 0.3rem 0.85rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+section[data-testid="test-user-dislikes"] li {
+  background: rgba(240, 147, 251, 0.07);
+  color: #764ba2;
+  border: 1px solid rgba(118, 75, 162, 0.2);
+  border-left: 1px solid rgba(118, 75, 162, 0.2);
+  padding: 0.3rem 0.85rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  margin-bottom: 0;
+}
+
+/* === Global list items (about page etc.) === */
+ul li {
+  background: #f0f4ff;
+  border-left: 3px solid #667eea;
+  padding: 0.55rem 0.8rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.45rem;
+  color: #333;
+}
+
+/* === About page heading sizes === */
+.content-wrapper h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 0.5rem;
+}
+
+/* === Headings === */
+h2 {
+  color: #1a1a2e;
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
   margin-bottom: 0.75rem;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
-}
-
-ul li {
-  background: #eef6ff;
-  border-left: 4px solid #007acc;
-  padding: 0.6rem 0.8rem;
-  border-radius: 0.4rem;
+h3 {
+  color: #1a1a2e;
+  font-size: 1rem;
+  font-weight: 600;
   margin-bottom: 0.5rem;
 }
 
@@ -107,59 +378,105 @@ form {
   text-align: left;
 }
 
+.form-group label {
+  display: block;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 0.35rem;
+}
+
 input,
 textarea {
   width: 100%;
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
-  transition: border 0.3s;
+  padding: 0.65rem 0.85rem;
+  border: 1.5px solid #e0e0e8;
+  border-radius: 0.6rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  color: #1a1a2e;
+  background: #fafafa;
 }
 
 input:focus,
 textarea:focus {
-  border-color: #007acc;
+  border-color: #667eea;
   outline: none;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.12);
+  background: #fff;
 }
 
 button {
-  background: #007acc;
+  background: linear-gradient(135deg, #667eea, #764ba2);
   color: #fff;
   border: none;
-  padding: 0.75rem;
-  border-radius: 6px;
-  font-weight: 500;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.6rem;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: opacity 0.25s, transform 0.2s;
+  font-family: inherit;
 }
 
 button:hover {
-  background: #005fa3;
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+button:focus-visible {
+  outline: 2px solid #667eea;
+  outline-offset: 2px;
 }
 
 .error {
   color: #d93025;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
+  margin-top: 0.25rem;
 }
 
 .success {
   color: #0f9d58;
   margin-top: 0.5rem;
+  font-size: 0.875rem;
 }
 
-/* === Responsive Design === */
-@media (max-width: 600px) {
-  .content-wrapper,
+/* === Responsive === */
+@media (max-width: 540px) {
   article[data-testid="test-profile-card"] {
-    padding: 1.5rem;
+    padding-right: 2rem;
+    padding-top: 158px;
+    text-align: center;
   }
 
-  img[data-testid="test-user-avatar"] {
-    width: 90px;
-    height: 90px;
+  figure {
+    top: 1.5rem;
+    right: 50%;
+    transform: translateX(50%);
   }
 
-  .main-nav li {
-    margin: 0 0.5rem;
+  p[data-testid="test-user-bio"] {
+    max-width: 100%;
+  }
+
+  nav[data-testid="test-user-social-links"] ul {
+    justify-content: center;
+  }
+
+  section[data-testid="test-user-hobbies"] ul,
+  section[data-testid="test-user-dislikes"] ul {
+    justify-content: center;
+  }
+
+  article[data-testid="test-profile-card"] > p:not([data-testid]) {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 400px) {
+  .main-nav a {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.8rem;
   }
 }
